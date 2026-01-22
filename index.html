@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vincent Masoso | Full Stack Developer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --primary: #2563eb;
+        --secondary: #1e40af;
+        --dark: #1f2937;
+        --light: #f9fafb;
+        --gray: #6b7280;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: var(--light);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header & Navigation */
+      header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .logo span {
+        color: var(--secondary);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--dark);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 150px 0 100px;
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero h1 span {
+        color: var(--primary);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--gray);
+        margin-bottom: 30px;
+        max-width: 600px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid var(--primary);
+      }
+
+      .btn:hover {
+        background-color: transparent;
+        color: var(--primary);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: var(--primary);
+        margin-left: 15px;
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .hero-image {
+        flex: 1;
+        text-align: center;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Section Styling */
+      section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        width: 70px;
+        height: 4px;
+        background-color: var(--primary);
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title p {
+        color: var(--gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--secondary);
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+        color: var(--gray);
+      }
+
+      .info-list {
+        list-style: none;
+        margin-top: 30px;
+      }
+
+      .info-list li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .info-list i {
+        color: var(--primary);
+        margin-right: 10px;
+        width: 20px;
+      }
+
+      /* Skills Section */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-category {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .skill-category h3 {
+        margin-bottom: 20px;
+        color: var(--secondary);
+        display: flex;
+        align-items: center;
+      }
+
+      .skill-category h3 i {
+        margin-right: 10px;
+        color: var(--primary);
+      }
+
+      .skill-item {
+        margin-bottom: 15px;
+      }
+
+      .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+
+      .skill-bar {
+        height: 10px;
+        background-color: #e5e7eb;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .skill-level {
+        height: 100%;
+        background-color: var(--primary);
+        border-radius: 5px;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .project-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-img {
+        height: 200px;
+        background-color: #e5e7eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray);
+        font-size: 3rem;
+      }
+
+      .project-info {
+        padding: 25px;
+      }
+
+      .project-info h3 {
+        margin-bottom: 10px;
+        color: var(--secondary);
+      }
+
+      .project-info p {
+        color: var(--gray);
+        margin-bottom: 20px;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .tag {
+        background-color: #dbeafe;
+        color: var(--primary);
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      /* Contact Section */
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 50px;
+      }
+
+      .contact-info h3 {
+        margin-bottom: 20px;
+        color: var(--secondary);
+      }
+
+      .contact-info p {
+        margin-bottom: 30px;
+        color: var(--gray);
+      }
+
+      .contact-details {
+        list-style: none;
+      }
+
+      .contact-details li {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .contact-details i {
+        background-color: #dbeafe;
+        color: var(--primary);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .contact-form textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 60px 0 30px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      .footer-links h4,
+      .footer-social h4 {
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #d1d5db;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #374151;
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .social-icons a:hover {
+        background-color: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid #374151;
+        color: #9ca3af;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding: 120px 0 80px;
+        }
+
+        .hero-content {
+          margin-bottom: 50px;
+        }
+
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+          transform: translateY(-100%);
+          opacity: 0;
+          transition: all 0.3s;
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">Vincent<span>Masoso</span></div>
+          <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Hi, I'm <span>Vincent Masoso</span><br />Full Stack Developer</h1>
+          <p>
+            Computer Technology student specializing in web development, digital
+            marketing, and team mentorship. I create functional, user-friendly
+            websites and help businesses grow online.
+          </p>
+          <a href="#projects" class="btn">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+        <div class="hero-image">
+          <!-- Placeholder for your image -->
+          <div
+            style="
+              background: linear-gradient(135deg, #2563eb, #1e40af);
+              width: 400px;
+              height: 400px;
+              border-radius: 20px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              font-size: 1.5rem;
+            "
+          >
+            <div style="text-align: center">
+              <i
+                class="fas fa-user"
+                style="font-size: 5rem; margin-bottom: 20px"
+              ></i>
+              <p>Vincent Masoso</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+          <p>
+            Get to know more about my background, education, and professional
+            journey
+          </p>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Computer Technology Student & Digital Entrepreneur</h3>
+            <p>
+              I'm a passionate developer currently pursuing my Bachelor's in
+              Computer Technology at Maseno University. With hands-on experience
+              in web development and digital marketing, I bridge the gap between
+              technology and business growth.
+            </p>
+            <p>
+              My expertise ranges from building responsive websites using modern
+              technologies to creating effective digital marketing strategies
+              that drive engagement and conversions.
+            </p>
+
+            <ul class="info-list">
+              <li>
+                <i class="fas fa-graduation-cap"></i>
+                <strong>Education:</strong> B.Sc. Computer Technology, Maseno
+                University (2023-Present)
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <strong>Location:</strong> Kisumu, Kenya
+              </li>
+              <li>
+                <i class="fas fa-phone"></i> <strong>Phone:</strong> +254 707
+                995 729
+              </li>
+              <li>
+                <i class="fas fa-language"></i>
+                <strong>Languages:</strong> English, Kiswahili, Luhya (Fluent) |
+                Jaluo (Learning)
+              </li>
+            </ul>
+          </div>
+          <div class="about-image">
+            <!-- You can add your photo here -->
+            <div
+              style="
+                background-color: #f3f4f6;
+                height: 400px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--gray);
+              "
+            >
+              <i class="fas fa-user-tie" style="font-size: 5rem"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>My Skills</h2>
+          <p>Technical and professional capabilities I bring to projects</p>
+        </div>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3><i class="fas fa-code"></i> Technical Skills</h3>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>HTML/CSS/JavaScript</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Web Deployment (Vercel)</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Responsive Design</span>
+                <span>80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3><i class="fas fa-chart-line"></i> Digital Marketing</h3>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Affiliate Marketing</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Social Media Strategy</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Content Creation</span>
+                <span>88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 88%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3><i class="fas fa-users"></i> Professional Skills</h3>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Team Mentorship</span>
+                <span>92%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Communication</span>
+                <span>88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Client Onboarding</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>My Projects</h2>
+          <p>Some of my recent work and accomplishments</p>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div
+              class="project-img"
+              style="
+                background: linear-gradient(135deg, #2563eb, #1e40af);
+                color: white;
+              "
+            >
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="project-info">
+              <h3>Mulastar Agencies Website</h3>
+              <p>
+                A fully responsive business website for a client agency,
+                featuring service showcases, contact forms, and modern design.
+              </p>
+              <div class="project-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Vercel</span>
+              </div>
+              <a
+                href="https://mulastar-agencies.vercel.app"
+                target="_blank"
+                class="btn"
+                style="padding: 8px 20px; font-size: 0.9rem"
+                >View Live Site</a
+              >
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div
+              class="project-img"
+              style="
+                background: linear-gradient(135deg, #10b981, #059669);
+                color: white;
+              "
+            >
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="project-info">
+              <h3>Digital Mentorship Program</h3>
+              <p>
+                Created and managed a WhatsApp-based mentorship program for
+                affiliate marketers, serving 50+ members with training materials
+                and progress tracking.
+              </p>
+              <div class="project-tags">
+                <span class="tag">WhatsApp</span>
+                <span class="tag">Training</span>
+                <span class="tag">Community</span>
+                <span class="tag">Strategy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div
+              class="project-img"
+              style="
+                background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+                color: white;
+              "
+            >
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="project-info">
+              <h3>Social Media Growth Campaign</h3>
+              <p>
+                Designed and executed TikTok marketing campaigns for affiliate
+                promotions, gaining over 10,000 views and increasing lead
+                generation by 25%.
+              </p>
+              <div class="project-tags">
+                <span class="tag">TikTok</span>
+                <span class="tag">Content Creation</span>
+                <span class="tag">Digital Marketing</span>
+                <span class="tag">Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Me</h2>
+          <p>Let's discuss your project or collaboration opportunity</p>
+        </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p>
+              I'm currently available for freelance projects, web development
+              work, or digital marketing consultations. Feel free to reach out!
+            </p>
+
+            <ul class="contact-details">
+              <li>
+                <i class="fas fa-phone"></i>
+                <div>
+                  <h4>Phone</h4>
+                  <p>+254 707 995 729</p>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <h4>Email</h4>
+                  <p>vincent.masoso@example.com</p>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <h4>Location</h4>
+                  <p>Kisumu, Kenya</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-form">
+            <form id="contactForm">
+              <input type="text" placeholder="Your Name" required />
+              <input type="email" placeholder="Your Email" required />
+              <input type="text" placeholder="Subject" required />
+              <textarea placeholder="Your Message" required></textarea>
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <div class="footer-logo">Vincent<span>Masoso</span></div>
+            <p>
+              Full Stack Developer & Digital Growth Specialist passionate about
+              creating functional web solutions and helping businesses thrive
+              online.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-social">
+            <h4>Connect With Me</h4>
+            <div class="social-icons">
+              <a href="#" title="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p style="margin-top: 20px; color: #d1d5db">
+              Let's build something amazing together!
+            </p>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2024 Vincent Masoso. All Rights Reserved.</p>
+          <p style="margin-top: 10px">Designed & Developed by Vincent Masoso</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const navLinks = document.querySelector(".nav-links");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        mobileMenuBtn.innerHTML = navLinks.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Form submission (basic example)
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for your message! I will get back to you soon.");
+          this.reset();
+        });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          if (this.getAttribute("href") === "#") return;
+
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
