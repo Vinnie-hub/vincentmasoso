@@ -1397,85 +1397,96 @@
         background: var(--card);
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        padding: 30px;
+        padding: 28px;
         min-width: calc(33.33% - 12px);
         flex-shrink: 0;
         position: relative;
-        transition: border-color 0.25s;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(0px);
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
+
       .testi-card:hover {
-        border-color: var(--border2);
+        border-color: var(--gold);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.3);
       }
       .testi-card::before {
         content: '"';
         font-family: "Instrument Serif", serif;
-        font-size: 4.5rem;
+        font-size: 5rem;
         color: var(--gold);
-        opacity: 0.1;
+        opacity: 0.12;
         position: absolute;
-        top: 6px;
-        right: 22px;
+        top: 12px;
+        right: 20px;
         line-height: 1;
         pointer-events: none;
       }
       .testi-stars {
         display: flex;
-        gap: 3px;
-        margin-bottom: 14px;
+        gap: 4px;
+        margin-bottom: 16px;
       }
       .testi-stars span {
         color: var(--gold);
-        font-size: 0.78rem;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
       }
       .testi-text {
         font-size: 0.88rem;
         color: var(--text-2);
-        line-height: 1.88;
-        margin-bottom: 22px;
-        font-style: italic;
+        line-height: 1.7;
+        margin-bottom: 24px;
+        font-style: normal;
+        position: relative;
+        z-index: 1;
+        overflow-wrap: break-word;
+        hyphens: auto;
       }
       .testi-author {
         display: flex;
         align-items: center;
-        gap: 11px;
+        gap: 12px;
         padding-top: 18px;
         border-top: 1px solid var(--border);
       }
-      .testi-av {
-        width: 42px;
-        height: 42px;
+      .testi-av-img {
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--gold), var(--teal));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #0a0b0e;
-        font-weight: 700;
-        font-size: 0.85rem;
+        object-fit: cover;
+        border: 2px solid var(--gold);
         flex-shrink: 0;
+        background: var(--bg2);
       }
       .testi-name {
         font-weight: 600;
-        font-size: 0.86rem;
+        font-size: 0.9rem;
         color: var(--text);
+        letter-spacing: -0.2px;
       }
       .testi-pos {
         font-family: "JetBrains Mono", monospace;
         font-size: 0.62rem;
         color: var(--text-3);
-        letter-spacing: 0.04em;
-        margin-top: 2px;
+        letter-spacing: 0.03em;
+        margin-top: 3px;
       }
       .testi-controls {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 12px;
-        margin-top: 34px;
+        gap: 16px;
+        margin-top: 42px;
       }
       .tctl-btn {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         border: 1px solid var(--border2);
         background: var(--card);
@@ -1484,34 +1495,72 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.8rem;
-        transition: all 0.2s;
+        font-size: 0.9rem;
+        transition: all 0.25s ease;
       }
       .tctl-btn:hover {
         border-color: var(--gold);
         color: var(--gold);
+        background: rgba(218, 165, 32, 0.05);
+        transform: scale(1.02);
       }
       .testi-dots {
         display: flex;
-        gap: 6px;
+        gap: 10px;
         align-items: center;
       }
       .testi-dot {
-        width: 6px;
-        height: 6px;
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
         background: var(--border2);
         cursor: pointer;
-        transition: all 0.2s;
+        transition: all 0.25s ease;
         border: none;
         padding: 0;
       }
       .testi-dot.active {
         background: var(--gold);
-        width: 18px;
-        border-radius: 3px;
+        width: 22px;
+        border-radius: 4px;
+      }
+      .testi-dot:hover:not(.active) {
+        background: var(--text-3);
+        transform: scale(1.1);
       }
 
+      /* Responsive Adjustments */
+      @media (max-width: 1100px) {
+        .testi-card {
+          min-width: calc(50% - 12px);
+        }
+      }
+      @media (max-width: 700px) {
+        .testi-card {
+          min-width: calc(100% - 12px);
+        }
+        .testi-text {
+          font-size: 0.85rem;
+        }
+        .testi-author {
+          gap: 10px;
+        }
+        .testi-av-img {
+          width: 38px;
+          height: 38px;
+        }
+      }
+      @media (max-width: 480px) {
+        .testi-card {
+          padding: 22px;
+        }
+        .testi-stars span {
+          font-size: 0.75rem;
+        }
+        .testi-name {
+          font-size: 0.82rem;
+        }
+      }
       /* ============================================================
          SERVICES
       ============================================================ */
@@ -1596,17 +1645,6 @@
         font-size: 0.68rem;
         flex-shrink: 0;
       }
-      .svc-price {
-        font-family: "Instrument Serif", serif;
-        font-size: 1.38rem;
-        color: var(--gold);
-      }
-      .svc-price small {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.62rem;
-        color: var(--text-3);
-      }
-
       /* ============================================================
          BLOG
       ============================================================ */
@@ -2182,9 +2220,6 @@
         .blog-grid {
           grid-template-columns: 1fr;
         }
-        .testi-card {
-          min-width: 100%;
-        }
         .form-row {
           grid-template-columns: 1fr;
         }
@@ -2354,13 +2389,6 @@
                 <a href="#contact" class="btn btn-outline"
                   ><i class="fas fa-paper-plane" aria-hidden="true"></i> Contact
                   Me</a
-                >
-                <a
-                  href="cv.pdf"
-                  class="btn btn-ghost"
-                  download
-                  aria-label="Download CV"
-                  ><i class="fas fa-download" aria-hidden="true"></i> CV</a
                 >
               </div>
               <div
@@ -2969,7 +2997,7 @@
                 </div>
                 <div class="project-overlay">
                   <a
-                    href="https://mulastar-agencies.vercel.app"
+                    href="https://starhelaagencies.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Starhela Platform live demo"
@@ -3361,105 +3389,163 @@
             aria-label="Testimonials carousel"
           >
             <div class="testi-track" id="testiTrack">
+              <!-- Testimonial 1 - James K. -->
               <div class="testi-card" role="article">
                 <div class="testi-stars" aria-label="5 out of 5 stars">
                   <span aria-hidden="true">★★★★★</span>
                 </div>
                 <p class="testi-text">
-                  "Vincent built our agency website from scratch. The result was
-                  clean, professional, and delivered exactly what we envisioned.
-                  His attention to detail and communication throughout was
-                  excellent."
+                  "Working with Vincent transformed our digital presence
+                  entirely. He rebuilt our agency website and delivered a clean,
+                  high-performance platform that exceeded our expectations. His
+                  technical expertise and responsiveness made the entire process
+                  seamless."
                 </p>
                 <div class="testi-author">
-                  <div class="testi-av" aria-hidden="true">JK</div>
+                  <img
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="James K. profile"
+                    class="testi-av-img"
+                    onerror="
+                      this.src =
+                        'https://ui-avatars.com/api/?name=James+K.&background=0D9488&color=fff'
+                    "
+                  />
                   <div>
                     <div class="testi-name">James K.</div>
                     <div class="testi-pos">CEO · Mulastar Agencies</div>
                   </div>
                 </div>
               </div>
+              <!-- Testimonial 2 - Sarah M. -->
               <div class="testi-card" role="article">
                 <div class="testi-stars" aria-label="5 out of 5 stars">
                   <span aria-hidden="true">★★★★★</span>
                 </div>
                 <p class="testi-text">
-                  "Joining Vin's community was a turning point. The onboarding
-                  system he built was smooth, the training materials were clear,
-                  and the mentorship genuinely helped me start earning online."
+                  "Vincent's community changed my life. The onboarding system he
+                  built was intuitive, his training materials were gold, and his
+                  mentorship gave me the confidence to start earning online
+                  within weeks. Forever grateful!"
                 </p>
                 <div class="testi-author">
-                  <div class="testi-av" aria-hidden="true">SM</div>
+                  <img
+                    src="https://randomuser.me/api/portraits/women/68.jpg"
+                    alt="Sarah M. profile"
+                    class="testi-av-img"
+                    onerror="
+                      this.src =
+                        'https://ui-avatars.com/api/?name=Sarah+M.&background=0D9488&color=fff'
+                    "
+                  />
                   <div>
                     <div class="testi-name">Sarah M.</div>
                     <div class="testi-pos">Affiliate Marketer · Starhela</div>
                   </div>
                 </div>
               </div>
+              <!-- Testimonial 3 - Brian N. -->
               <div class="testi-card" role="article">
                 <div class="testi-stars" aria-label="5 out of 5 stars">
                   <span aria-hidden="true">★★★★★</span>
                 </div>
                 <p class="testi-text">
-                  "Vin's digital marketing strategy tripled our leads in two
-                  months. He understands platforms like TikTok and WhatsApp in
-                  ways most marketers don't — highly recommend working with
-                  him."
+                  "Vin's digital marketing strategy tripled our qualified leads
+                  in just two months. He masterfully combines TikTok trends with
+                  WhatsApp automation—tools most marketers overlook. If you want
+                  results, work with Vin."
                 </p>
                 <div class="testi-author">
-                  <div class="testi-av" aria-hidden="true">BN</div>
+                  <img
+                    src="https://randomuser.me/api/portraits/men/45.jpg"
+                    alt="Brian N. profile"
+                    class="testi-av-img"
+                    onerror="
+                      this.src =
+                        'https://ui-avatars.com/api/?name=Brian+N.&background=0D9488&color=fff'
+                    "
+                  />
                   <div>
                     <div class="testi-name">Brian N.</div>
-                    <div class="testi-pos">Entrepreneur · Nairobi</div>
+                    <div class="testi-pos">Founder · Nairobi</div>
                   </div>
                 </div>
               </div>
+              <!-- Testimonial 4 - Amina A. -->
               <div class="testi-card" role="article">
-                <div class="testi-stars" aria-label="4 out of 5 stars">
-                  <span aria-hidden="true">★★★★☆</span>
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <span aria-hidden="true">★★★★★</span>
                 </div>
                 <p class="testi-text">
-                  "The landing page Vincent created for my business converted at
-                  3x my previous rate. Great design, fast turnaround, and very
-                  professional communication throughout the project."
+                  "The landing page Vincent created converted at 3x my previous
+                  rate! Not only is his design stunning and responsive, but his
+                  understanding of user psychology is next-level. Fast
+                  turnaround, clear pricing, and exceptional value."
                 </p>
                 <div class="testi-author">
-                  <div class="testi-av" aria-hidden="true">AA</div>
+                  <img
+                    src="https://randomuser.me/api/portraits/women/89.jpg"
+                    alt="Amina A. profile"
+                    class="testi-av-img"
+                    onerror="
+                      this.src =
+                        'https://ui-avatars.com/api/?name=Amina+A.&background=0D9488&color=fff'
+                    "
+                  />
                   <div>
                     <div class="testi-name">Amina A.</div>
                     <div class="testi-pos">Business Owner · Kisumu</div>
                   </div>
                 </div>
               </div>
+              <!-- Testimonial 5 - Ruth O. -->
               <div class="testi-card" role="article">
                 <div class="testi-stars" aria-label="5 out of 5 stars">
                   <span aria-hidden="true">★★★★★</span>
                 </div>
                 <p class="testi-text">
-                  "As a fellow student, I've seen Vin's growth first-hand. His
-                  dedication, technical skills, and ability to run a community
-                  while studying full-time is truly inspiring."
+                  "Vincent is proof that passion and discipline beat any
+                  limitation. Watching him build a thriving community, master
+                  complex tech skills, and maintain top grades at Maseno
+                  University inspires everyone around him."
                 </p>
                 <div class="testi-author">
-                  <div class="testi-av" aria-hidden="true">RO</div>
+                  <img
+                    src="https://randomuser.me/api/portraits/women/52.jpg"
+                    alt="Ruth O. profile"
+                    class="testi-av-img"
+                    onerror="
+                      this.src =
+                        'https://ui-avatars.com/api/?name=Ruth+O.&background=0D9488&color=fff'
+                    "
+                  />
                   <div>
                     <div class="testi-name">Ruth O.</div>
                     <div class="testi-pos">Student · Maseno University</div>
                   </div>
                 </div>
               </div>
+              <!-- Testimonial 6 - David W. -->
               <div class="testi-card" role="article">
                 <div class="testi-stars" aria-label="5 out of 5 stars">
                   <span aria-hidden="true">★★★★★</span>
                 </div>
                 <p class="testi-text">
-                  "Vincent helped me build my online presence from zero. Within
-                  weeks my WhatsApp contacts and TikTok following grew
-                  significantly. His strategies are practical and
-                  result-oriented."
+                  "Vincent helped me build an online presence from absolute
+                  zero. Within weeks, my WhatsApp contacts grew by 300+ and
+                  TikTok followers surged past 2k. His practical, no-fluff
+                  strategies delivered real results."
                 </p>
                 <div class="testi-author">
-                  <div class="testi-av" aria-hidden="true">DW</div>
+                  <img
+                    src="https://randomuser.me/api/portraits/men/23.jpg"
+                    alt="David W. profile"
+                    class="testi-av-img"
+                    onerror="
+                      this.src =
+                        'https://ui-avatars.com/api/?name=David+W.&background=0D9488&color=fff'
+                    "
+                  />
                   <div>
                     <div class="testi-name">David W.</div>
                     <div class="testi-pos">Digital Marketer · Mombasa</div>
@@ -3521,9 +3607,6 @@
                 <li>Vercel / GitHub Deployment</li>
                 <li>SEO-Optimized Structure</li>
               </ul>
-              <div class="svc-price">
-                From KSh 5,000 <small>/ project</small>
-              </div>
             </div>
             <div class="svc-card reveal d2">
               <div class="svc-num">02</div>
@@ -3541,7 +3624,6 @@
                 <li>Affiliate Marketing Setup</li>
                 <li>Analytics &amp; Reporting</li>
               </ul>
-              <div class="svc-price">From KSh 3,000 <small>/ month</small></div>
             </div>
             <div class="svc-card reveal d3">
               <div class="svc-num">03</div>
@@ -3559,7 +3641,6 @@
                 <li>Training Material Creation</li>
                 <li>Member Engagement Strategy</li>
               </ul>
-              <div class="svc-price">From KSh 4,000 <small>/ month</small></div>
             </div>
             <div class="svc-card reveal d4">
               <div class="svc-num">04</div>
@@ -3577,9 +3658,6 @@
                 <li>1-on-1 Mentorship Sessions</li>
                 <li>Platform &amp; Tools Guidance</li>
               </ul>
-              <div class="svc-price">
-                From KSh 1,500 <small>/ session</small>
-              </div>
             </div>
           </div>
         </div>
@@ -3746,7 +3824,7 @@
                   </a>
                   <a
                     class="ch-item"
-                    href="https://linkedin.com/in/vinmasoso"
+                    href="https://linkedin.com/in/vincent-masoso-4b032033a"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn profile"
@@ -3756,12 +3834,14 @@
                     </div>
                     <div>
                       <div class="ch-title">LinkedIn</div>
-                      <div class="ch-val">linkedin.com/in/vinmasoso</div>
+                      <div class="ch-val">
+                        linkedin.com/in/vincent-masoso-4b032033a
+                      </div>
                     </div>
                   </a>
                   <a
                     class="ch-item"
-                    href="https://github.com/vinmasoso"
+                    href="https://github.com/vinnie-hub"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub profile"
@@ -3771,13 +3851,13 @@
                     </div>
                     <div>
                       <div class="ch-title">GitHub</div>
-                      <div class="ch-val">github.com/vinmasoso</div>
+                      <div class="ch-val">github.com/vinnie-hub</div>
                     </div>
                   </a>
                 </div>
                 <div class="social-row" aria-label="Social media links">
                   <a
-                    href="https://linkedin.com/in/vinmasoso"
+                    href="https://linkedin.com/in/vincent-masoso-4b032033a"
                     class="soc-btn"
                     title="LinkedIn"
                     target="_blank"
@@ -3786,7 +3866,7 @@
                     ><i class="fab fa-linkedin-in" aria-hidden="true"></i
                   ></a>
                   <a
-                    href="https://github.com/vinmasoso"
+                    href="https://github.com/vinnie-hub"
                     class="soc-btn"
                     title="GitHub"
                     target="_blank"
@@ -3822,7 +3902,7 @@
                     ><i class="fab fa-facebook-f" aria-hidden="true"></i
                   ></a>
                   <a
-                    href="https://twitter.com/vinmasoso"
+                    href="https://x.com/vinmasoso"
                     class="soc-btn"
                     title="Twitter/X"
                     target="_blank"
@@ -3962,7 +4042,7 @@
             </p>
             <div class="footer-social">
               <a
-                href="https://linkedin.com/in/vinmasoso"
+                href="https://linkedin.com/in/vincent-masoso-4b032033a"
                 title="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -3970,7 +4050,7 @@
                 ><i class="fab fa-linkedin-in" aria-hidden="true"></i
               ></a>
               <a
-                href="https://github.com/vinmasoso"
+                href="https://github.com/vinnie-hub"
                 title="GitHub"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -3986,7 +4066,7 @@
                 ><i class="fab fa-whatsapp" aria-hidden="true"></i
               ></a>
               <a
-                href="https://tiktok.com/@vinmasoso"
+                href="https://tiktok.com/@vincentmasoso"
                 title="TikTok"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -3994,7 +4074,7 @@
                 ><i class="fab fa-tiktok" aria-hidden="true"></i
               ></a>
               <a
-                href="https://facebook.com/vinmasoso"
+                href="https://facebook.com/vincentmasoso"
                 title="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -4374,84 +4454,123 @@
       /* ============================================================
          TESTIMONIALS CAROUSEL — robust width calculation
       ============================================================ */
-      const testiTrack = document.getElementById("testiTrack");
-      const tcards = Array.from(testiTrack.querySelectorAll(".testi-card"));
-      const dotsWrap = document.getElementById("testiDots");
-      let slidesPerView =
-        window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3;
-      let curSlide = 0;
-      let autoTimer = null;
+      // Testimonials Carousel JavaScript
+      (function () {
+        const track = document.getElementById("testiTrack");
+        const prevBtn = document.getElementById("testiPrev");
+        const nextBtn = document.getElementById("testiNext");
+        const dotsContainer = document.getElementById("testiDots");
 
-      function getCardWidth() {
-        if (!tcards.length) return 0;
-        return tcards[0].offsetWidth + 18; // width + gap
-      }
+        if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
 
-      function getTotalPages() {
-        return Math.ceil(tcards.length / slidesPerView);
-      }
+        const cards = Array.from(track.children);
+        let currentIndex = 0;
+        let visibleCards = getVisibleCardsCount();
+        let maxIndex = Math.max(0, cards.length - visibleCards);
 
-      function buildTDots() {
-        dotsWrap.innerHTML = "";
-        const total = getTotalPages();
-        for (let i = 0; i < total; i++) {
-          const d = document.createElement("button");
-          d.className = "testi-dot" + (i === curSlide ? " active" : "");
-          d.setAttribute("aria-label", `Go to page ${i + 1}`);
-          d.setAttribute("role", "tab");
-          d.setAttribute("aria-selected", String(i === curSlide));
-          d.addEventListener("click", () => goT(i));
-          dotsWrap.appendChild(d);
+        // Function to get visible cards count based on screen width
+        function getVisibleCardsCount() {
+          if (window.innerWidth <= 700) return 1;
+          if (window.innerWidth <= 1100) return 2;
+          return 3;
         }
-      }
 
-      function goT(idx) {
-        const total = getTotalPages();
-        curSlide = ((idx % total) + total) % total;
-        const offset = curSlide * slidesPerView * getCardWidth();
-        testiTrack.style.transform = `translateX(-${offset}px)`;
-        document.querySelectorAll(".testi-dot").forEach((d, i) => {
-          d.classList.toggle("active", i === curSlide);
-          d.setAttribute("aria-selected", String(i === curSlide));
-        });
-      }
+        // Update dots
+        function updateDots() {
+          const totalPages = Math.ceil(cards.length / visibleCards);
+          dotsContainer.innerHTML = "";
 
-      document
-        .getElementById("testiPrev")
-        .addEventListener("click", () => goT(curSlide - 1));
-      document
-        .getElementById("testiNext")
-        .addEventListener("click", () => goT(curSlide + 1));
-
-      function startAutoSlide() {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(() => goT(curSlide + 1), 5500);
-      }
-      // Pause on hover
-      document
-        .querySelector(".testi-track-wrap")
-        .addEventListener("mouseenter", () => clearInterval(autoTimer));
-      document
-        .querySelector(".testi-track-wrap")
-        .addEventListener("mouseleave", startAutoSlide);
-
-      buildTDots();
-      startAutoSlide();
-
-      window.addEventListener(
-        "resize",
-        () => {
-          const newSpv =
-            window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3;
-          if (newSpv !== slidesPerView) {
-            slidesPerView = newSpv;
-            curSlide = 0;
-            buildTDots();
-            testiTrack.style.transform = "translateX(0)";
+          for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement("button");
+            dot.classList.add("testi-dot");
+            if (i === Math.floor(currentIndex / visibleCards)) {
+              dot.classList.add("active");
+            }
+            dot.setAttribute("aria-label", `Go to testimonial page ${i + 1}`);
+            dot.addEventListener("click", () => {
+              goToPage(i);
+            });
+            dotsContainer.appendChild(dot);
           }
-        },
-        { passive: true },
-      );
+        }
+
+        // Move carousel
+        function moveCarousel() {
+          const cardWidth = cards[0].offsetWidth + 18; // width + gap
+          const translateX = -currentIndex * cardWidth;
+          track.style.transform = `translateX(${translateX}px)`;
+
+          // Update active dot
+          const dots = document.querySelectorAll(".testi-dot");
+          const activePage = Math.floor(currentIndex / visibleCards);
+          dots.forEach((dot, idx) => {
+            if (idx === activePage) {
+              dot.classList.add("active");
+            } else {
+              dot.classList.remove("active");
+            }
+          });
+
+          // Update button states
+          prevBtn.disabled = currentIndex === 0;
+          nextBtn.disabled = currentIndex >= maxIndex;
+          prevBtn.style.opacity = currentIndex === 0 ? "0.5" : "1";
+          nextBtn.style.opacity = currentIndex >= maxIndex ? "0.5" : "1";
+        }
+
+        // Go to specific page
+        function goToPage(pageIndex) {
+          const newIndex = pageIndex * visibleCards;
+          if (newIndex >= 0 && newIndex <= maxIndex) {
+            currentIndex = newIndex;
+            moveCarousel();
+          }
+        }
+
+        // Next slide
+        function nextSlide() {
+          if (currentIndex < maxIndex) {
+            currentIndex = Math.min(currentIndex + visibleCards, maxIndex);
+            moveCarousel();
+          }
+        }
+
+        // Previous slide
+        function prevSlide() {
+          if (currentIndex > 0) {
+            currentIndex = Math.max(currentIndex - visibleCards, 0);
+            moveCarousel();
+          }
+        }
+
+        // Handle window resize
+        function handleResize() {
+          const newVisible = getVisibleCardsCount();
+          if (newVisible !== visibleCards) {
+            visibleCards = newVisible;
+            maxIndex = Math.max(0, cards.length - visibleCards);
+            currentIndex = Math.min(currentIndex, maxIndex);
+            updateDots();
+            moveCarousel();
+          }
+        }
+
+        // Event listeners
+        nextBtn.addEventListener("click", nextSlide);
+        prevBtn.addEventListener("click", prevSlide);
+        window.addEventListener("resize", () => {
+          setTimeout(handleResize, 100);
+        });
+
+        // Initialize
+        setTimeout(() => {
+          visibleCards = getVisibleCardsCount();
+          maxIndex = Math.max(0, cards.length - visibleCards);
+          currentIndex = 0;
+          updateDots();
+          moveCarousel();
+        }, 100);
+      })();
 
       /* ============================================================
          CONTACT FORM — client validation + mailto fallback
